@@ -1,71 +1,91 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import Image from 'next/image';
+import { useTranslations, useLocale } from 'next-intl';
+import { Facebook, Instagram } from 'lucide-react';
 
 export default function Footer() {
+    const t = useTranslations('Footer');
+    const locale = useLocale();
+
+    const getLocalizedPath = (path: string) => `/${locale}${path}`;
+
     return (
-        <footer className="bg-gray-900 border-t border-gray-800 text-gray-300 pt-16 pb-8 transition-colors duration-300">
+        <footer className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-primary-100 dark:border-gray-800 pt-16 pb-8 transition-all duration-300">
             <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 
                 {/* Brand */}
                 <div>
-                    <Link href="/" className="text-2xl font-bold text-white mb-6 block">
-                        Zusammen<span className="text-secondary">Umzüge</span>
+                    <Link href={`/${locale}`} className="flex items-center gap-3 mb-6 group">
+                        <div className="relative w-14 h-14 flex-shrink-0">
+                            <Image
+                                src="/logo-Circle.png"
+                                alt="Zusammen Umzüge Logo"
+                                fill
+                                className="object-contain transition-transform group-hover:scale-105"
+                            />
+                        </div>
+                        <div className="flex flex-col justify-center">
+                            <span className="text-2xl font-extrabold text-primary-900 dark:text-white leading-none tracking-tight group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">Zusammen</span>
+                            <span className="text-2xl font-bold text-secondary leading-none tracking-wide">Umzüge</span>
+                        </div>
                     </Link>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                        Wir bringen Sie sicher in Ihr neues Zuhause. Vertrauen verbindet – seit Jahren Ihr zuverlässiger Partner für Umzüge und Transporte.
+                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                        {t('about')}
                     </p>
                     <div className="flex gap-4">
-                        <a href="#" className="hover:text-white transition-colors"><Facebook size={20} /></a>
-                        <a href="#" className="hover:text-white transition-colors"><Instagram size={20} /></a>
-                        <a href="#" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
+                        <a href="#" className="hover:text-secondary text-gray-500 dark:text-gray-400 transition-colors"><Facebook size={24} /></a>
+                        <a href="#" className="hover:text-secondary text-gray-500 dark:text-gray-400 transition-colors"><Instagram size={24} /></a>
+                        <a href="https://www.tiktok.com/@zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="hover:text-secondary text-gray-500 dark:text-gray-400 transition-colors">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
                 {/* Services */}
                 <div>
-                    <h4 className="text-white font-bold text-lg mb-6">Unsere Leistungen</h4>
-                    <ul className="space-y-3 text-sm">
-                        <li><Link href="/services" className="hover:text-secondary transition-colors">Privatumzug</Link></li>
-                        <li><Link href="/services" className="hover:text-secondary transition-colors">Firmenumzug</Link></li>
-                        <li><Link href="/services" className="hover:text-secondary transition-colors">Entrümpelung & Räumung</Link></li>
-                        <li><Link href="/services" className="hover:text-secondary transition-colors">Möbeltransport</Link></li>
-                        <li><Link href="/services" className="hover:text-secondary transition-colors">Packservice</Link></li>
+                    <h4 className="text-gray-900 dark:text-white font-bold text-lg mb-6">{t('services')}</h4>
+                    <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li><Link href={getLocalizedPath('/services')} className="hover:text-secondary transition-colors">{t('services')}</Link></li>
                     </ul>
                 </div>
 
                 {/* Links */}
                 <div>
-                    <h4 className="text-white font-bold text-lg mb-6">Rechtliches</h4>
-                    <ul className="space-y-3 text-sm">
-                        <li><Link href="/impressum" className="hover:text-secondary transition-colors">Impressum</Link></li>
-                        <li><Link href="/datenschutz" className="hover:text-secondary transition-colors">Datenschutz</Link></li>
-                        <li><Link href="/agb" className="hover:text-secondary transition-colors">AGB</Link></li>
+                    <h4 className="text-gray-900 dark:text-white font-bold text-lg mb-6">{t('legal')}</h4>
+                    <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                        <li><Link href={getLocalizedPath('/impressum')} className="hover:text-secondary transition-colors">{t('imprint')}</Link></li>
+                        <li><Link href={getLocalizedPath('/datenschutz')} className="hover:text-secondary transition-colors">{t('privacy')}</Link></li>
+                        <li><Link href={getLocalizedPath('/agb')} className="hover:text-secondary transition-colors">{t('terms')}</Link></li>
                     </ul>
                 </div>
 
                 {/* Contact */}
                 <div>
-                    <h4 className="text-white font-bold text-lg mb-6">Kontakt</h4>
+                    <h4 className="text-gray-900 dark:text-white font-bold text-lg mb-6">{t('contact')}</h4>
                     <ul className="space-y-3 text-sm">
-                        <li className="flex gap-2 text-gray-400">
-                            <span className="text-white font-medium">Adresse:</span>
+                        <li className="flex gap-2 text-gray-600 dark:text-gray-400">
+                            <span className="text-gray-900 dark:text-white font-medium">{t('address')}:</span>
                             <span>Musterstraße 123<br />12345 Musterstadt</span>
                         </li>
-                        <li className="flex gap-2 text-gray-400">
-                            <span className="text-white font-medium">Telefon:</span>
-                            <a href="tel:+49123456789" className="hover:text-white">0123 456 789</a>
+                        <li className="flex gap-2 text-gray-600 dark:text-gray-400">
+                            <span className="text-gray-900 dark:text-white font-medium">{t('phone')}:</span>
+                            <a href="tel:+4917644465156" className="hover:text-secondary transition-colors">017644465156</a>
                         </li>
-                        <li className="flex gap-2 text-gray-400">
-                            <span className="text-white font-medium">E-Mail:</span>
-                            <a href="mailto:info@zusammen-umzuege.de" className="hover:text-white">info@zusammen-umzuege.de</a>
+                        <li className="flex gap-2 text-gray-600 dark:text-gray-400">
+                            <span className="text-gray-900 dark:text-white font-medium">{t('email')}:</span>
+                            <a href="mailto:info@zusammen-umzuege.de" className="hover:text-secondary transition-colors">info@zusammen-umzuege.de</a>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <div className="container mx-auto px-4 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-                <p>&copy; {new Date().getFullYear()} Zusammen Umzüge. Alle Rechte vorbehalten.</p>
+            <div className="container mx-auto px-4 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-500 dark:text-gray-400">
+                <p>&copy; {new Date().getFullYear()} Zusammen Umzüge. {t('rights')}</p>
             </div>
         </footer>
     );
 }
+
+

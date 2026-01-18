@@ -1,18 +1,22 @@
+import { useTranslations } from 'next-intl';
 import { CheckCircle2, HelpCircle } from 'lucide-react';
 
 export default function FeaturesAndFAQ() {
+    const tFeatures = useTranslations('Features');
+    const tFAQ = useTranslations('FAQ');
+
     const features = [
-        { title: 'Festpreis-Garantie', desc: 'Keine versteckten Kosten. Der vereinbarte Preis ist verbindlich.' },
-        { title: 'Transparenz', desc: 'Klare Kommunikation und offene Beratung von Anfang an.' },
-        { title: 'Versicherung', desc: 'Rundum-Schutz für Ihre Möbel und Wertsachen während des Transports.' },
-        { title: 'Erfahrenes Team', desc: 'Geschulte Profis, die sorgfältig und effizient arbeiten.' },
+        { title: tFeatures('fixedPrice'), desc: tFeatures('fixedPriceDesc') },
+        { title: tFeatures('transparency'), desc: tFeatures('transparencyDesc') },
+        { title: tFeatures('insurance'), desc: tFeatures('insuranceDesc') },
+        { title: tFeatures('team'), desc: tFeatures('teamDesc') },
     ];
 
     const faqs = [
-        { q: 'Wie lange im Voraus sollte ich anfragen?', a: 'Idealerweise 2-4 Wochen vor dem geplanten Termin. Für kurzfristige Anfragen rufen Sie uns am besten direkt an.' },
-        { q: 'Bieten Sie auch Kartons an?', a: 'Ja, wir liefern hochwertiges Verpackungsmaterial und nehmen es nach dem Umzug auf Wunsch wieder mit.' },
-        { q: 'Was kostet eine Besichtigung?', a: 'Die Besichtigung vor Ort ist in der Regel kostenlos und unverbindlich, um den Aufwand genau einschätzen zu können.' },
-        { q: 'Können Sie Möbel demontieren?', a: 'Selbstverständlich. Unser Team übernimmt fachgerecht De- und Montage Ihrer Möbel sowie Küchen.' },
+        { q: tFAQ('q1'), a: tFAQ('a1') },
+        { q: tFAQ('q2'), a: tFAQ('a2') },
+        { q: tFAQ('q3'), a: tFAQ('a3') },
+        { q: tFAQ('q4'), a: tFAQ('a4') },
     ];
 
     return (
@@ -20,8 +24,8 @@ export default function FeaturesAndFAQ() {
             {/* Features */}
             <div className="container mx-auto px-4 mb-24">
                 <div className="text-center mb-16">
-                    <span className="text-secondary font-bold text-sm uppercase tracking-wide">Ihre Vorteile</span>
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mt-2">Warum wir der richtige Partner sind</h2>
+                    <span className="text-secondary font-bold text-sm uppercase tracking-wide">{tFeatures('title')}</span>
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mt-2">{tFeatures('subtitle')}</h2>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -40,8 +44,8 @@ export default function FeaturesAndFAQ() {
             {/* FAQ */}
             <div className="container mx-auto px-4 max-w-3xl">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Häufig gestellte Fragen</h2>
-                    <p className="text-gray-600 dark:text-gray-400">Alles, was Sie wissen müssen.</p>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{tFAQ('title')}</h2>
+                    <p className="text-gray-600 dark:text-gray-400">{tFAQ('subtitle')}</p>
                 </div>
 
                 <div className="space-y-4">

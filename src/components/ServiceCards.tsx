@@ -1,23 +1,26 @@
+import { useTranslations } from 'next-intl';
 import { Home, Building2, Trash2, Warehouse, Truck, Package } from 'lucide-react';
 
-const services = [
-    { icon: Home, title: 'Privatumzug', desc: 'Komplettservice für Ihren Wohnungswechsel. Von der Planung bis zur Montage.' },
-    { icon: Building2, title: 'Firmenumzug', desc: 'Effiziente Büroumzüge mit minimaler Ausfallzeit für Ihr Geschäft.' },
-    { icon: Trash2, title: 'Entrümpelung', desc: 'Wir entrümpeln Wohnungen, Dachböden und mehr – schnell und besenrein.' },
-    { icon: Warehouse, title: 'Keller & Garage', desc: 'Fachgerechte Räumung und Entsorgung von Sperrmüll aus Kellern und Garagen.' },
-    { icon: Truck, title: 'Möbeltransport', desc: 'Sicherer Transport einzelner Möbelstücke oder ganzer Einrichtungen.' },
-    { icon: Package, title: 'Packservice', desc: 'Professionelles Ein- und Auspacken sowie Bereitstellung von Umzugskartons.' },
-];
-
 export default function ServiceCards() {
+    const t = useTranslations('ServiceCards');
+
+    const services = [
+        { icon: Home, title: t('private'), desc: t('privateDesc') },
+        { icon: Building2, title: t('office'), desc: t('officeDesc') },
+        { icon: Trash2, title: t('clearance'), desc: t('clearanceDesc') },
+        { icon: Warehouse, title: t('cellar'), desc: t('cellarDesc') },
+        { icon: Truck, title: t('transport'), desc: t('transportDesc') },
+        { icon: Package, title: t('packing'), desc: t('packingDesc') },
+    ];
+
     return (
         <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <span className="text-secondary font-bold tracking-wider uppercase text-sm">Unsere Services</span>
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">Wir packen das an</h2>
+                    <span className="text-secondary font-bold tracking-wider uppercase text-sm">{t('subtitle')}</span>
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">{t('title')}</h2>
                     <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        Egal ob Single-Appartement oder Großbüro – wir bieten maßgeschneiderte Lösungen für jeden Bedarf.
+                        {t('desc')}
                     </p>
                 </div>
 

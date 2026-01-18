@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme();
@@ -14,7 +14,7 @@ export function ThemeToggle() {
     }, []);
 
     if (!mounted) {
-        return <div className="w-16 h-8 bg-gray-200 rounded-full" />; // Skeleton loading
+        return <div className="w-9 h-9" />; // Placeholder
     }
 
     const isDark = theme === 'dark';
@@ -22,36 +22,20 @@ export function ThemeToggle() {
     return (
         <button
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
-            className={`
-                relative inline-flex items-center h-9 w-16 px-1 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 dark:focus:ring-offset-gray-900
-                ${isDark ? 'bg-gray-800' : 'bg-primary-50 border border-primary-200'}
-            `}
-            aria-label="Theme Toggle"
+            className="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-600 dark:text-gray-300"
+            aria-label="Toggle Theme"
         >
-            <span className="sr-only">Toggle Theme</span>
-
-            {/* Background Icons */}
-            <div className="absolute left-2 text-primary-600">
-                <Sun size={14} />
-            </div>
-            <div className="absolute right-2 text-gray-400">
-                <Moon size={14} />
-            </div>
-
-            {/* Sliding Switch */}
-            <motion.div
-                className="w-7 h-7 bg-white rounded-full shadow-md flex items-center justify-center z-10"
-                layout
-                transition={{ type: "spring", stiffness: 700, damping: 30 }}
-                animate={{ x: isDark ? 28 : 0 }}
-                initial={false}
-            >
-                {isDark ? (
-                    <Moon size={14} className="text-secondary" />
-                ) : (
-                    <Sun size={14} className="text-secondary" />
-                )}
-            </motion.div>
+            <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                    key={isDark ? 'dark' : 'light'}
+                    initial={{ y: -10, opacity: 0, rotate: -45 }}
+                    animate={{ y: 0, opacity: 1, rotate: 0 }}
+                    exit={{ y: 10, opacity: 0, rotate: 45 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    {isDark ? <Moon size={22} className="text-secondary" /> : <Sun size={22} className="text-primary-600" />}
+                </motion.div>
+            </AnimatePresence>
         </button>
     );
 }
