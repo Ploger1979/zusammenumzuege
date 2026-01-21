@@ -25,7 +25,7 @@ export default function Footer() {
                             />
                         </div>
                         <div className="flex flex-col justify-center">
-                            <span className="text-2xl font-extrabold text-primary-900 dark:text-white leading-none tracking-tight group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">Zusammen</span>
+                            <span className="text-2xl font-extrabold text-[#10b981] dark:text-[#34d399] leading-none tracking-tight group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">Zusammen</span>
                             <span className="text-2xl font-bold text-secondary leading-none tracking-wide">Umzüge</span>
                         </div>
                     </Link>
