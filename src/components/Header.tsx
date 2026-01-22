@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Facebook, Instagram } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
@@ -53,12 +53,19 @@ export default function Header() {
                         <LoginStatus />
                     </div>
 
-                    <a href="tel:+491782722300" className="flex items-center gap-1.5 hover:text-secondary transition-colors">
-                        <Phone size={14} className="text-secondary" /> 01782722300
-                    </a>
-                    <a href="mailto:info@zusammenumzuege.de" className="flex items-center gap-1.5 hover:text-secondary transition-colors">
-                        <Mail size={14} className="text-secondary" /> info@zusammenumzuege.de
-                    </a>
+                    <div className="flex items-center gap-4">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+                            <Facebook size={16} />
+                        </a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+                            <Instagram size={16} />
+                        </a>
+                        <a href="https://www.tiktok.com/@zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                                <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -139,9 +146,18 @@ export default function Header() {
                         <Link href={getLocalizedPath('angebot')} onClick={() => setIsMenuOpen(false)} className="bg-secondary text-white p-3 rounded-xl font-bold text-center shadow-sm block">
                             {t('freeOffer')}
                         </Link>
-                        <div className="flex justify-center gap-6 pt-2 text-gray-500 dark:text-gray-400">
-                            <a href="tel:+491782722300"><Phone size={20} /></a>
-                            <a href="mailto:info@zusammen-umzuege.de"><Mail size={20} /></a>
+                        <div className="flex justify-center gap-6 pt-4 pb-2">
+                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
+                                <Facebook size={28} strokeWidth={1.5} />
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
+                                <Instagram size={28} strokeWidth={1.5} />
+                            </a>
+                            <a href="https://www.tiktok.com/@zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+                                    <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" />
+                                </svg>
+                            </a>
                         </div>
                     </nav>
                 </div>
