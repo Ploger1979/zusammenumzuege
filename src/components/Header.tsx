@@ -54,10 +54,10 @@ export default function Header() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+                        <a href="https://www.facebook.com/zusammen.umzuege" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
                             <Facebook size={16} />
                         </a>
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+                        <a href="https://www.instagram.com/zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
                             <Instagram size={16} />
                         </a>
                         <a href="https://www.tiktok.com/@zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
@@ -147,10 +147,10 @@ export default function Header() {
                             {t('freeOffer')}
                         </Link>
                         <div className="flex justify-center gap-6 pt-4 pb-2">
-                            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
+                            <a href="https://www.facebook.com/zusammen.umzuege" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
                                 <Facebook size={28} strokeWidth={1.5} />
                             </a>
-                            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
+                            <a href="https://www.instagram.com/zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
                                 <Instagram size={28} strokeWidth={1.5} />
                             </a>
                             <a href="https://www.tiktok.com/@zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
