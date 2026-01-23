@@ -18,7 +18,7 @@ export default function Footer() {
                     <Link href={`/${locale}`} className="flex items-center gap-3 mb-6 group">
                         <div className="relative w-14 h-14 flex-shrink-0">
                             <Image
-                                src="/logo-Circle.png"
+                                src="/logo-transparent-final.png"
                                 alt="Zusammen Umzüge Logo"
                                 fill
                                 className="object-contain transition-transform group-hover:scale-105"
