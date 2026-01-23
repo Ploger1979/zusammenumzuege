@@ -34,9 +34,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t('title'),
     description: t('description'),
     icons: {
-      icon: '/logo-transparent-final.png',
-      shortcut: '/logo-transparent-final.png',
-      apple: '/logo-transparent-final.png',
+      icon: '/favicon-circle.png?v=2',
+      shortcut: '/favicon-circle.png?v=2',
+      apple: '/favicon-circle.png?v=2',
     },
     openGraph: {
       title: t('title'),
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: 'Zusammen Umzüge',
       images: [
         {
-          url: '/logo-transparent-final.png',
+          url: '/favicon-circle.png?v=2',
           width: 800,
           height: 800,
           alt: 'Zusammen Umzüge Logo',
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/logo-transparent-final.png'],
+      images: ['/favicon-circle.png?v=2'],
     },
   };
 }
