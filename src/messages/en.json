@@ -40,7 +40,7 @@
         "transparency": "Transparency",
         "insurance": "Insurance",
         "team": "Experienced Team",
-        "fixedPriceDesc": "No hidden costs. The agreed price is binding.",
+        "fixedPriceDesc": "A price that satisfies you.",
         "transparencyDesc": "Clear communication and open advice from the start.",
         "insuranceDesc": "All-round protection for your furniture and valuables during transport.",
         "teamDesc": "Trained professionals who work carefully and efficiently."
@@ -48,8 +48,6 @@
     "FAQ": {
         "title": "Frequently Asked Questions",
         "subtitle": "Everything you need to know.",
-        "q1": "How far in advance should I request?",
-        "a1": "Ideally 2-4 weeks before the planned date.",
         "q2": "Do you also offer boxes?",
         "a2": "Yes, we supply high-quality packaging material.",
         "q3": "How much does a viewing cost?",

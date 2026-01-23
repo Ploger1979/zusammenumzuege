@@ -40,7 +40,7 @@
         "transparency": "Transparenz",
         "insurance": "Versicherung",
         "team": "Erfahrenes Team",
-        "fixedPriceDesc": "Keine versteckten Kosten. Der vereinbarte Preis ist verbindlich.",
+        "fixedPriceDesc": "Ein Preis, der Sie zufriedenstellt.",
         "transparencyDesc": "Klare Kommunikation und offene Beratung von Anfang an.",
         "insuranceDesc": "Rundum-Schutz für Ihre Möbel und Wertsachen während des Transports.",
         "teamDesc": "Geschulte Profis, die sorgfältig und effizient arbeiten."
@@ -48,8 +48,6 @@
     "FAQ": {
         "title": "Häufig gestellte Fragen",
         "subtitle": "Alles, was Sie wissen müssen.",
-        "q1": "Wie lange im Voraus sollte ich anfragen?",
-        "a1": "Idealerweise 2-4 Wochen vor dem geplanten Termin.",
         "q2": "Bieten Sie auch Kartons an?",
         "a2": "Ja, wir liefern hochwertiges Verpackungsmaterial.",
         "q3": "Was kostet eine Besichtigung?",
