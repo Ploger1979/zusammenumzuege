@@ -24,7 +24,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
     const transporter = nodemailer.createTransport({
         host: SMTP_HOST,
         port: Number(SMTP_PORT),
-        secure: false, // true for 465, false for other ports
+        secure: Number(SMTP_PORT) === 465, // true for 465, false for other ports
         auth: {
             user: SMTP_USER,
             pass: SMTP_PASS,
