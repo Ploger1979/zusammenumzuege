@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { getUsers, deleteUser, createAdminUser } from '@/app/actions/auth';
-import { Trash2, UserPlus, Shield, ArrowLeft, Loader2, Calendar } from 'lucide-react';
+import { Trash2, UserPlus, Shield, ArrowLeft, Loader2, Calendar, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 
 interface UserData {
@@ -28,6 +28,7 @@ export default function AdminUsersPage() {
     const [newName, setNewName] = useState('');
     const [newEmail, setNewEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
 
@@ -54,7 +55,7 @@ export default function AdminUsersPage() {
             setSuccessMsg(t('successDelete'));
             loadUsers(); // Reload list
         } else {
-            setError('Error deleting user');
+            setError('serverError');
         }
         setActionLoading(false);
         setTimeout(() => setSuccessMsg(''), 3000);
@@ -80,7 +81,7 @@ export default function AdminUsersPage() {
             setNewPassword('');
             loadUsers(); // Reload list
         } else {
-            setError(result.error ? String(result.error) : 'Error adding user');
+            setError(result.error ? String(result.error) : 'serverError');
         }
         setActionLoading(false);
         setTimeout(() => setSuccessMsg(''), 3000);
@@ -176,21 +177,32 @@ export default function AdminUsersPage() {
                         </div>
                         <div>
                             <label className="block text-gray-300 mb-2 text-sm font-medium">{t('password')}</label>
-                            <input
-                                type="password"
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
-                                required
-                                minLength={6}
-                                className="w-full bg-[#0f172a] border border-gray-600 rounded-lg p-3 text-white focus:border-[#FFC107] focus:ring-1 focus:ring-[#FFC107] focus:outline-none transition"
-                                placeholder="••••••"
-                            />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    value={newPassword}
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                    required
+                                    minLength={6}
+                                    className="w-full bg-[#0f172a] border border-gray-600 rounded-lg p-3 text-white focus:border-[#FFC107] focus:ring-1 focus:ring-[#FFC107] focus:outline-none transition ltr:pr-10 rtl:pl-10"
+                                    placeholder="••••••"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute top-1/2 -translate-y-1/2 ltr:right-3 rtl:left-3 text-gray-400 hover:text-white transition"
+                                    tabIndex={-1}
+                                >
+                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
+                            </div>
                             <p className="text-gray-500 text-xs mt-1 text-end">Min. 6 chars</p>
                         </div>
 
                         {error && (
                             <div className="p-3 bg-red-900/30 border border-red-500/50 text-red-200 rounded text-sm text-center">
-                                {t('error') || error}
+                                {/* Use t() to translate logic error keys if possible, or fallback relative to context */}
+                                {['emailExists', 'passwordTooShort', 'serverError', 'passwordMismatch'].includes(error) ? t(error as any) : error}
                             </div>
                         )}
 
