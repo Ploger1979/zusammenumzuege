@@ -318,7 +318,10 @@ export default function InvoiceGenerator() {
                     <div className="w-1/3 text-right">
                         <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 border-b pb-1">{t('companyInfo')}</h3>
                         <p className="font-bold">Zusammen Umzüge</p>
-                        <p className="text-gray-600">&nbsp;</p>
+                        <p className="text-gray-600 flex justify-end items-center gap-1">
+                            Inh.
+                            <input className="bg-transparent border-b border-gray-300 w-32 text-right focus:border-primary outline-none print:border-none" placeholder="" />
+                        </p>
                         <p className="text-gray-600">Bochumer Str</p>
                         <p className="text-gray-600">45276 Essen</p>
 
