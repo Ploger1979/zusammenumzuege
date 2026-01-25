@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { Facebook, Instagram } from 'lucide-react';
+
 
 export default function Footer() {
     const t = useTranslations('Footer');
