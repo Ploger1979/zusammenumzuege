@@ -33,16 +33,35 @@ export default function Footer() {
                         {t('about')}
                     </p>
                     <div className="flex gap-6">
-                        <a href="https://www.facebook.com/zusammen.umzuege" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
-                            <Facebook size={28} strokeWidth={1.5} />
-                        </a>
-                        <a href="https://www.instagram.com/zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
-                            <Instagram size={28} strokeWidth={1.5} />
-                        </a>
-                        <a href="https://www.tiktok.com/@zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors duration-300 hover:scale-110 transform">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-                                <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" />
+                        <a href="https://www.facebook.com/zusammen.umzuege" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
+                            <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="12" fill="#1877F2" />
+                                <path d="M14.5 12.01h2l0.5-3h-2.5v-2c0-0.75 0.25-1 1-1h1.5v-3h-2.5c-2.5 0-3.5 1.25-3.5 3.5v2.5h-2v3h2v9h3.5v-9z" fill="white" />
                             </svg>
+                        </a>
+                        <a href="https://www.instagram.com/zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
+                            <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#instagram-gradient-footer)" />
+                                <path d="M12 7C9.243 7 7 9.243 7 12S9.243 17 12 17 17 14.757 17 12 14.757 7 12 7ZM12 15C10.346 15 9 13.654 9 12S10.346 9 12 9 15 10.346 15 12 13.654 15 12 15Z" fill="white" />
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="white" />
+                                <defs>
+                                    <linearGradient id="instagram-gradient-footer" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse">
+                                        <stop stopColor="#FFC107" />
+                                        <stop offset="0.5" stopColor="#F44336" />
+                                        <stop offset="1" stopColor="#9C27B0" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@zusammen_umzuege" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300 text-black dark:text-white bg-black dark:bg-white rounded-full p-1.5 w-8 h-8 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" stroke="none" />
+                            </svg>
+                            {/* Inverting text color for TikTok to ensure visibility against the circle background */}
+                            <style jsx>{`
+                                a:last-child { color: white; }
+                                :global(.dark) a:last-child { color: black; }
+                            `}</style>
                         </a>
                     </div>
                 </div>
