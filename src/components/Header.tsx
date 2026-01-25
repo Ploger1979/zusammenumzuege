@@ -87,11 +87,7 @@ export default function Header() {
 
                 {/* Logo */}
                 <Link href={`/${locale}`} className="flex items-center gap-3 group">
-                    <Image src="/logo-transparent-final.png" alt="Zusammen Umzüge" width={60} height={60} className="w-14 h-14 object-contain transition-transform group-hover:scale-105 rounded-full" />
-                    <div className="flex flex-col">
-                        <span className="text-xl font-extrabold text-[#10b981] dark:text-[#34d399] leading-none tracking-tight group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">Zusammen</span>
-                        <span className="text-xl font-bold text-secondary leading-none tracking-wide">Umzüge</span>
-                    </div>
+                    <Image src="/logo-new.jpg" alt="Zusammen Umzüge" width={80} height={80} className="w-20 h-20 object-contain transition-transform group-hover:scale-105 rounded-full" />
                 </Link>
 
                 {/* Desktop Nav */}

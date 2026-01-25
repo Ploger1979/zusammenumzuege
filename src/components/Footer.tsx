@@ -16,17 +16,13 @@ export default function Footer() {
                 {/* Brand */}
                 <div>
                     <Link href={`/${locale}`} className="flex items-center gap-3 mb-6 group">
-                        <div className="relative w-14 h-14 flex-shrink-0">
+                        <div className="relative w-24 h-24 flex-shrink-0">
                             <Image
-                                src="/logo-transparent-final.png"
+                                src="/logo-new.jpg"
                                 alt="Zusammen Umzüge Logo"
                                 fill
                                 className="object-contain transition-transform group-hover:scale-105 rounded-full"
                             />
-                        </div>
-                        <div className="flex flex-col justify-center">
-                            <span className="text-2xl font-extrabold text-[#10b981] dark:text-[#34d399] leading-none tracking-tight group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">Zusammen</span>
-                            <span className="text-2xl font-bold text-secondary leading-none tracking-wide">Umzüge</span>
                         </div>
                     </Link>
                     <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">

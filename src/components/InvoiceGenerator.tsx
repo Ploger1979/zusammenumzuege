@@ -283,7 +283,7 @@ export default function InvoiceGenerator() {
                 <div className="flex justify-between items-start mb-12 border-b-2 border-primary pb-6">
                     <div className="flex items-center gap-4">
                         {/* Ensure logo exists in public folder or use placeholder */}
-                        <img src="/logo-transparent-final.png" alt="Logo" className="w-20 h-20 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
+                        <img src="/logo-new.jpg" alt="Logo" className="w-20 h-20 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
                         <div>
                             <h1 className="text-3xl font-bold text-primary">Zusammen Umzüge</h1>
                             <p className="text-sm text-gray-600">Professionelle Umzüge & Transporte</p>
