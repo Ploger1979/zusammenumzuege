@@ -9,9 +9,9 @@
     },
     "Hero": {
         "trust": "Vertrauen verbindet",
-        "title": "Stressfreier Umzug",
-        "subtitle": "In Ihr neues Zuhause",
-        "desc": "Professionell, schnell und zuverlässig. Wir erledigen Ihren Umzug, Transport oder Entrümpelung – stressfrei und zum fairen Preis.",
+        "title": "Stressfreier Umzug Deutschlandweit",
+        "subtitle": "In Ihr neues Zuhause - Überall in Deutschland",
+        "desc": "Professionell, schnell und zuverlässig. Wir erledigen Ihren Umzug, Transport oder Entrümpelung in ganz Deutschland – stressfrei und zum fairen Preis.",
         "fastTransport": "Schneller Transport",
         "fullyInsured": "Voll Versichert",
         "fairPrices": "Faire Preise"
@@ -190,7 +190,7 @@
     },
     "Metadata": {
         "title": "Zusammen Umzüge | Ihr Partner für Umzüge",
-        "description": "Professionelles Umzugsunternehmen. Privatumzüge, Firmenumzüge, Entrümpelung und Transport."
+        "description": "Professionelles Umzugsunternehmen für ganz Deutschland. Privatumzüge, Firmenumzüge & Entrümpelung – deutschlandweit."
     },
     "Invoice": {
         "title": "Rechnungsgenerator",
