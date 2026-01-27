@@ -1,3 +1,5 @@
+![Zusammen Umzuege Preview](preview.png)
+
 # ZusammenUmzuege – Website
 🌐 Live: https://zussammenumzuege.de/
 
