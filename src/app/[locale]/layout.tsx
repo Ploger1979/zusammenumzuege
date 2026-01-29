@@ -57,6 +57,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     verification: {
       google: '2IhAGtUCnfAXY5Wg_9tDrCqUw7TbpeUSHnD8Pd4lr0M',
     },
+    icons: {
+      icon: '/favicon-circle.png',
+      apple: '/favicon-circle.png',
+    },
   };
 }
 
