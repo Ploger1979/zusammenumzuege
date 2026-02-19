@@ -163,7 +163,7 @@ export default function InvoiceGenerator() {
     };
 
     return (
-        <div className="min-h-screen bg-[#0f172a] p-4 font-sans print:p-0 print:bg-white text-white">
+        <div className="min-h-screen bg-gray-50 dark:bg-[#0f172a] p-4 font-sans print:p-0 print:bg-white text-gray-900 dark:text-white transition-colors duration-300">
 
             {/* Header / Navigation */}
             <div className="max-w-4xl mx-auto mb-6 flex flex-col md:flex-row justify-between items-center gap-4 print:hidden">
@@ -193,8 +193,8 @@ export default function InvoiceGenerator() {
             <div className="max-w-5xl mx-auto flex flex-col gap-12 print:block print:max-w-none">
 
                 {/* 1. INPUT FORM (Hidden in Print) */}
-                <div className="bg-[#1e293b] p-6 rounded-xl shadow-xl border border-gray-700 h-fit print:hidden">
-                    <h2 className="text-lg font-bold text-[#FFC107] mb-4 border-b border-gray-600 pb-2 flex items-center gap-2">
+                <div className="bg-white dark:bg-[#1e293b] p-6 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 h-fit print:hidden transition-colors duration-300">
+                    <h2 className="text-lg font-bold text-gray-800 dark:text-[#FFC107] mb-4 border-b border-gray-200 dark:border-gray-600 pb-2 flex items-center gap-2">
                         <Layers size={20} className="text-[#FFC107]" />
                         {t('createTitle')}
                     </h2>
@@ -203,35 +203,35 @@ export default function InvoiceGenerator() {
                         {/* Meta Data */}
                         <div className="grid grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">{t('invoiceDate')}</label>
+                                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">{t('invoiceDate')}</label>
                                 <input
                                     type="date"
                                     value={invoiceDate}
                                     onChange={(e) => setInvoiceDate(e.target.value)}
-                                    className="w-full bg-[#0f172a] border border-gray-600 rounded p-2 text-sm text-white focus:border-[#FFC107] focus:outline-none"
+                                    className="w-full bg-gray-50 dark:bg-[#0f172a] border border-gray-200 dark:border-gray-600 rounded p-2 text-sm text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors"
                                 />
                             </div>
                             <div>
-                                <label className="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">{t('invoiceNr')}</label>
+                                <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">{t('invoiceNr')}</label>
                                 <input
                                     type="text"
                                     value={invoiceNr}
                                     onChange={(e) => setInvoiceNr(e.target.value)}
-                                    className="w-full bg-[#0f172a] border border-gray-600 rounded p-2 text-sm text-white focus:border-[#FFC107] focus:outline-none"
+                                    className="w-full bg-gray-50 dark:bg-[#0f172a] border border-gray-200 dark:border-gray-600 rounded p-2 text-sm text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors"
                                 />
                             </div>
                         </div>
 
                         {/* Customer Info */}
-                        <div className="space-y-3 p-4 bg-[#0f172a] rounded-lg border border-gray-700">
-                            <div className="flex items-center gap-2 mb-2 text-gray-300 font-semibold">
+                        <div className="space-y-3 p-4 bg-gray-50 dark:bg-[#0f172a] rounded-lg border border-gray-200 dark:border-gray-700 transition-colors">
+                            <div className="flex items-center gap-2 mb-2 text-gray-700 dark:text-gray-300 font-semibold">
                                 <Shield size={16} /> {t('customerInfo')}
                             </div>
                             <input
                                 type="text"
                                 value={customerName}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCustomerName(e.target.value)}
-                                className="w-full bg-[#1e293b] border border-gray-600 rounded p-2 text-sm text-white focus:border-[#FFC107] focus:outline-none"
+                                className="w-full bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-600 rounded p-2 text-sm text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors"
                                 placeholder={t('customerName')}
                             />
                             <textarea
@@ -239,13 +239,13 @@ export default function InvoiceGenerator() {
                                 value={customerAddress}
                                 onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setCustomerAddress(e.target.value)}
                                 rows={3}
-                                className="w-full bg-[#1e293b] border border-gray-600 rounded p-2 text-sm text-white resize-none focus:border-[#FFC107] focus:outline-none"
+                                className="w-full bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-600 rounded p-2 text-sm text-gray-900 dark:text-white resize-none focus:border-[#FFC107] focus:outline-none transition-colors"
                             />
                         </div>
 
                         {/* Company Info Input */}
-                        <div className="space-y-3 p-4 bg-[#0f172a] rounded-lg border border-gray-700">
-                            <div className="flex items-center gap-2 mb-2 text-gray-300 font-semibold">
+                        <div className="space-y-3 p-4 bg-gray-50 dark:bg-[#0f172a] rounded-lg border border-gray-200 dark:border-gray-700 transition-colors">
+                            <div className="flex items-center gap-2 mb-2 text-gray-700 dark:text-gray-300 font-semibold">
                                 <Shield size={16} /> {t('companyInfo')}
                             </div>
                             <div className="grid grid-cols-2 gap-3">
@@ -254,49 +254,49 @@ export default function InvoiceGenerator() {
                                     placeholder="Inh."
                                     value={companyOwner}
                                     onChange={(e) => setCompanyOwner(e.target.value)}
-                                    className="w-full bg-[#1e293b] border border-gray-600 rounded p-2 text-sm text-white focus:border-[#FFC107] focus:outline-none"
+                                    className="w-full bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-600 rounded p-2 text-sm text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors"
                                 />
                                 <input
                                     type="text"
                                     placeholder="Steuer-Nr."
                                     value={companyTaxId}
                                     onChange={(e) => setCompanyTaxId(e.target.value)}
-                                    className="w-full bg-[#1e293b] border border-gray-600 rounded p-2 text-sm text-white focus:border-[#FFC107] focus:outline-none"
+                                    className="w-full bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-600 rounded p-2 text-sm text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors"
                                 />
                                 <input
                                     type="text"
                                     placeholder="Adresse"
                                     value={companyAddress}
                                     onChange={(e) => setCompanyAddress(e.target.value)}
-                                    className="w-full bg-[#1e293b] border border-gray-600 rounded p-2 text-sm text-white focus:border-[#FFC107] focus:outline-none"
+                                    className="w-full bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-600 rounded p-2 text-sm text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors"
                                 />
                                 <input
                                     type="text"
                                     placeholder="PLZ/Ort"
                                     value={companyCity}
                                     onChange={(e) => setCompanyCity(e.target.value)}
-                                    className="w-full bg-[#1e293b] border border-gray-600 rounded p-2 text-sm text-white focus:border-[#FFC107] focus:outline-none"
+                                    className="w-full bg-white dark:bg-[#1e293b] border border-gray-200 dark:border-gray-600 rounded p-2 text-sm text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors"
                                 />
                             </div>
                         </div>
 
                         {/* Move Details */}
-                        <div className="space-y-3 p-4 bg-[#0f172a] rounded-lg border border-gray-700">
+                        <div className="space-y-3 p-4 bg-gray-50 dark:bg-[#0f172a] rounded-lg border border-gray-200 dark:border-gray-700 transition-colors">
                             <div className="flex items-center gap-2 mb-2 text-[#FFC107] font-semibold">
                                 <Truck size={16} /> Details
                             </div>
                             <div className="grid grid-cols-2 gap-3">
-                                <input type="text" placeholder={t('from')} value={fromAddress} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFromAddress(e.target.value)} className="w-full text-sm border-gray-600 rounded p-2 bg-[#1e293b] text-white focus:border-[#FFC107] focus:outline-none" />
-                                <input type="text" placeholder={t('to')} value={toAddress} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setToAddress(e.target.value)} className="w-full text-sm border-gray-600 rounded p-2 bg-[#1e293b] text-white focus:border-[#FFC107] focus:outline-none" />
+                                <input type="text" placeholder={t('from')} value={fromAddress} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFromAddress(e.target.value)} className="w-full text-sm border-gray-200 dark:border-gray-600 rounded p-2 bg-white dark:bg-[#1e293b] text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors" />
+                                <input type="text" placeholder={t('to')} value={toAddress} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setToAddress(e.target.value)} className="w-full text-sm border-gray-200 dark:border-gray-600 rounded p-2 bg-white dark:bg-[#1e293b] text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors" />
                                 <div className="relative">
-                                    <input type="number" placeholder={t('distance')} value={distance} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDistance(e.target.value)} className="w-full text-sm border-gray-600 rounded p-2 ps-8 bg-[#1e293b] text-white focus:border-[#FFC107] focus:outline-none" />
+                                    <input type="number" placeholder={t('distance')} value={distance} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDistance(e.target.value)} className="w-full text-sm border-gray-200 dark:border-gray-600 rounded p-2 ps-8 bg-white dark:bg-[#1e293b] text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors" />
                                     <Navigation size={14} className="absolute top-3 start-2.5 text-gray-400" />
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    <input type="text" placeholder={t('floor')} value={floor} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFloor(e.target.value)} className="w-full text-sm border-gray-600 rounded p-2 bg-[#1e293b] text-white focus:border-[#FFC107] focus:outline-none" />
-                                    <select value={elevator} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setElevator(e.target.value)} className="w-full text-sm border-gray-600 rounded p-2 bg-[#1e293b] text-white focus:border-[#FFC107] focus:outline-none">
-                                        <option value="No" className="text-black">{t('noElevator')}</option>
-                                        <option value="Yes" className="text-black">{t('elevator')}</option>
+                                    <input type="text" placeholder={t('floor')} value={floor} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFloor(e.target.value)} className="w-full text-sm border-gray-200 dark:border-gray-600 rounded p-2 bg-white dark:bg-[#1e293b] text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors" />
+                                    <select value={elevator} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setElevator(e.target.value)} className="w-full text-sm border-gray-200 dark:border-gray-600 rounded p-2 bg-white dark:bg-[#1e293b] text-gray-900 dark:text-white focus:border-[#FFC107] focus:outline-none transition-colors">
+                                        <option value="No" className="text-black dark:text-white">{t('noElevator')}</option>
+                                        <option value="Yes" className="text-black dark:text-white">{t('elevator')}</option>
                                     </select>
                                 </div>
                             </div>
@@ -304,37 +304,37 @@ export default function InvoiceGenerator() {
 
                         {/* Items Manager */}
                         <div>
-                            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wide mb-2 flex justify-between items-center">
+                            <h3 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 flex justify-between items-center">
                                 <span>{t('items')}</span>
-                                <button onClick={addItem} className="text-[#FFC107] hover:text-white text-xs flex items-center gap-1 font-bold transition">
+                                <button onClick={addItem} className="text-[#FFC107] hover:text-[#ffb300] text-xs flex items-center gap-1 font-bold transition">
                                     <Plus size={14} /> {t('addItem')}
                                 </button>
                             </h3>
                             <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1 custom-scrollbar">
                                 {items.map((item) => (
-                                    <div key={item.id} className="flex gap-2 items-start bg-[#0f172a] p-2 rounded border border-gray-700 group hover:border-[#FFC107] transition">
+                                    <div key={item.id} className="flex gap-2 items-start bg-gray-50 dark:bg-[#0f172a] p-2 rounded border border-gray-200 dark:border-gray-700 group hover:border-[#FFC107] transition transition-colors">
                                         <input
                                             type="text"
                                             value={item.description}
                                             onChange={(e) => updateItem(item.id, 'description', e.target.value)}
-                                            className="flex-grow min-w-0 bg-transparent border-b border-gray-600 focus:border-[#FFC107] outline-none text-sm py-1 text-white"
+                                            className="flex-grow min-w-0 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-[#FFC107] outline-none text-sm py-1 text-gray-900 dark:text-white transition-colors"
                                             placeholder={t('desc')}
                                         />
                                         <input
                                             type="number"
                                             value={item.qty}
                                             onChange={(e) => updateItem(item.id, 'qty', Number(e.target.value))}
-                                            className="w-16 bg-transparent border-b border-gray-600 focus:border-[#FFC107] outline-none text-sm py-1 text-center text-white"
+                                            className="w-16 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-[#FFC107] outline-none text-sm py-1 text-center text-gray-900 dark:text-white transition-colors"
                                             placeholder={t('qty')}
                                         />
                                         <input
                                             type="number"
                                             value={item.price}
                                             onChange={(e) => updateItem(item.id, 'price', Number(e.target.value))}
-                                            className="w-20 bg-transparent border-b border-gray-600 focus:border-[#FFC107] outline-none text-sm py-1 text-end text-white"
+                                            className="w-20 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:border-[#FFC107] outline-none text-sm py-1 text-end text-gray-900 dark:text-white transition-colors"
                                             placeholder={t('price')}
                                         />
-                                        <div className="w-20 text-end py-1 text-sm font-medium opacity-60 text-white">
+                                        <div className="w-20 text-end py-1 text-sm font-medium opacity-60 text-gray-900 dark:text-white">
                                             {(item.qty * item.price).toFixed(2)}€
                                         </div>
                                         <button onClick={() => removeItem(item.id)} className="text-red-400 hover:text-red-500 p-1 opacity-0 group-hover:opacity-100 transition">
