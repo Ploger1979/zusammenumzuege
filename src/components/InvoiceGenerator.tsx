@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Printer, Plus, Trash2, RotateCcw, LogOut, Shield, Truck, Navigation, Layers } from 'lucide-react';
+import { Printer, Download, Plus, Trash2, RotateCcw, FileText, Layers, Save, ArrowLeft, Shield, Truck, Navigation } from 'lucide-react';
 import { logout } from '@/app/actions/auth';
 import Cookies from 'js-cookie';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -172,6 +172,15 @@ export default function InvoiceGenerator() {
                     {t('title')}
                 </h1>
                 <div className="flex gap-3">
+                    {/* Back to Dashboard Button for Admins */}
+                    <Link
+                        href={`/${locale}/admin/requests`}
+                        className="px-4 py-2 bg-gray-500/10 text-gray-600 hover:bg-gray-500/20 rounded-lg flex items-center gap-2 transition"
+                        title={t('backToDashboard') || "Back to Dashboard"}
+                    >
+                        <ArrowLeft size={18} />
+                        <span className="hidden sm:inline">{t('backToDashboard') || "Dashboard"}</span>
+                    </Link>
                     <button
                         onClick={resetForm}
                         className="px-4 py-2 bg-red-500/10 text-red-600 hover:bg-red-500/20 rounded-lg flex items-center gap-2 transition"

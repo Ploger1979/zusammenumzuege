@@ -242,7 +242,8 @@
         "taxId": "الرقم الضريبي",
         "moveDetails": "تفاصيل الطلب",
         "recipient": "المستلم",
-        "bankName": "البنك"
+        "bankName": "البنك",
+        "backToDashboard": "لوحة التحكم"
     },
     "Auth": {
         "loginTitle": "دخول الإدارة",

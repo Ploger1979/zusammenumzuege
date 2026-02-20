@@ -242,7 +242,8 @@
         "taxId": "Steuer-Nr.",
         "moveDetails": "Auftragsdetails",
         "recipient": "Empfänger",
-        "bankName": "Bank"
+        "bankName": "Bank",
+        "backToDashboard": "Dashboard"
     },
     "Auth": {
         "loginTitle": "Admin Login",

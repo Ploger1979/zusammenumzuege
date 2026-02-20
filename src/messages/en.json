@@ -241,7 +241,8 @@
         "taxId": "Tax ID",
         "moveDetails": "Order Details",
         "recipient": "Recipient",
-        "bankName": "Bank"
+        "bankName": "Bank",
+        "backToDashboard": "Dashboard"
     },
     "Auth": {
         "loginTitle": "Admin Login",
