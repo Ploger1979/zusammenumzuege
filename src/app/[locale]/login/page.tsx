@@ -37,7 +37,7 @@ export default function AuthPage() {
         const result = await login(formData);
 
         if (result.success) {
-            router.push(`/${locale}/invoice`);
+            router.push(`/${locale}/admin/requests`);
             router.refresh();
         } else {
             setError('error'); // Generic error for login
@@ -54,7 +54,7 @@ export default function AuthPage() {
         const result = await register(formData);
 
         if (result.success) {
-            router.push(`/${locale}/invoice`); // Login immediately after register
+            router.push(`/${locale}/admin/requests`); // Login immediately after register
             router.refresh();
         } else {
             setError(result.error || 'serverError');

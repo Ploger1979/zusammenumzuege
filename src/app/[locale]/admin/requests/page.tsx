@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { Shield, ArrowLeft, Loader2, Calendar, FileText, ArrowRight } from 'lucide-react';
+import { Shield, ArrowLeft, Loader2, Calendar, FileText, ArrowRight, LogOut } from 'lucide-react';
 import Link from 'next/link';
 
 interface RequestData {
@@ -60,6 +60,16 @@ export default function AdminRequestsPage() {
                         <Shield size={18} />
                         {t('admins')}
                     </Link>
+                    <button onClick={async () => {
+                        await fetch('/api/auth/logout', { method: 'POST' }); // Or call server action if available client-side, using direct logout action import is better
+                        // For quick implementation since we are in a client component:
+                        const { logout } = await import('@/app/actions/auth');
+                        await logout();
+                        window.location.href = '/';
+                    }} className="px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition flex items-center gap-2">
+                        <LogOut size={18} />
+                        {t('logout') || 'Abmelden'}
+                    </button>
                     <Link href={`/${locale}`} className="px-4 py-2 border border-gray-300 dark:border-[#FFC107] text-gray-700 dark:text-[#FFC107] rounded hover:bg-[#FFC107] hover:text-black transition flex items-center gap-2">
                         <ArrowLeft size={18} className="rtl:rotate-180" />
                         {t('back')}

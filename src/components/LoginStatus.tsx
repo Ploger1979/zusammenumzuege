@@ -33,16 +33,6 @@ export function LoginStatus() {
 
     if (!isLoggedIn) return null;
 
-    return (
-        <div className="flex items-center gap-4 text-emerald-600 dark:text-emerald-400 font-bold">
-            <Link href={`/${locale}/admin/requests`} className="flex items-center gap-1 hover:text-emerald-700 transition-colors">
-                <LayoutDashboard size={14} />
-                <span>Dashboard</span>
-            </Link>
-            <button onClick={handleLogout} className="flex items-center gap-1 hover:text-red-600 transition-colors">
-                <LogOut size={14} />
-                <span>Abmelden</span>
-            </button>
-        </div>
-    );
+    // User requested to hide these small links and put logout directly on the admin page
+    return null;
 }
