@@ -398,9 +398,9 @@ export default function InvoiceGenerator() {
                                         <img src="/logo.png" alt="Zusammen Umzüge" className="h-20 w-auto object-contain" />
                                         <p className="text-xs text-gray-500 max-w-[200px] leading-tight mt-2">
                                             Zusammen Umzüge<br />
-                                            Ihr zuverlässiger Partner für<br />
-                                            Zusammen Umzüge<br />
-                                            {t('slogan')}
+                                            Ihr zuverlässiger Partner.<br />
+                                            Zehnthofstrasse 55<br />
+                                            55252 Wiesbaden
                                         </p>
                                     </div>
                                     <div className="text-end">
