@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import nodemailer from 'nodemailer';
 
 export async function POST(req: NextRequest) {
     try {
@@ -15,6 +13,18 @@ export async function POST(req: NextRequest) {
                 { status: 400 }
             );
         }
+
+        // Hostinger SMTP Transporter
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.hostinger.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS,
+            },
+            tls: { rejectUnauthorized: false },
+        });
 
         const htmlContent = `
         <!DOCTYPE html>
@@ -52,10 +62,8 @@ export async function POST(req: NextRequest) {
                     <h1>📬 Neue Kontaktanfrage</h1>
                     <p>Eine neue Nachricht wurde über das Kontaktformular gesendet.</p>
                 </div>
-
                 <div class="body">
                     <div class="badge">📩 Eingehende Nachricht</div>
-
                     <div class="grid-2">
                         <div>
                             <div class="field-label">Vorname</div>
@@ -66,24 +74,18 @@ export async function POST(req: NextRequest) {
                             <div class="field-value">${lastName}</div>
                         </div>
                     </div>
-
                     <div class="field">
                         <div class="field-label">📞 Telefon</div>
-                        <div class="field-value">${phone || '—  Nicht angegeben'}</div>
+                        <div class="field-value">${phone || '— Nicht angegeben'}</div>
                     </div>
-
                     <hr class="divider" />
-
                     <div class="field">
                         <div class="field-label">💬 Nachricht</div>
                         <div class="message-box">${message.replace(/\n/g, '<br/>')}</div>
                     </div>
-
                     <hr class="divider" />
-
                     <p class="timestamp">📅 Empfangen am: <strong>${new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })} Uhr</strong></p>
                 </div>
-
                 <div class="footer">
                     <p>
                         <a href="https://zusammenumzuege.de">zusammenumzuege.de</a>
@@ -97,28 +99,20 @@ export async function POST(req: NextRequest) {
         </html>
         `;
 
-        const { error } = await resend.emails.send({
-            from: 'Zusammen Umzüge <onboarding@resend.dev>',   // ← temporär bis Domäne verifiziert
-            to: ['info@zusammenumzuege.de'],
+        await transporter.sendMail({
+            from: `"Zusammen Umzüge" <${process.env.SMTP_USER}>`,
+            to: 'info@zusammenumzuege.de',
             subject: `📬 Neue Anfrage von ${firstName} ${lastName}`,
             html: htmlContent,
-            replyTo: phone ? `${firstName} ${lastName} <noreply@zusammenumzuege.de>` : undefined,
+            text: `Neue Kontaktanfrage\n\nName: ${firstName} ${lastName}\nTelefon: ${phone || 'Nicht angegeben'}\n\nNachricht:\n${message}`,
         });
-
-        if (error) {
-            console.error('[Resend Error]:', error);
-            return NextResponse.json(
-                { error: 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.' },
-                { status: 500 }
-            );
-        }
 
         return NextResponse.json({ success: true }, { status: 200 });
 
     } catch (err) {
         console.error('[Contact API Error]:', err);
         return NextResponse.json(
-            { error: 'Ein unerwarteter Fehler ist aufgetreten.' },
+            { error: 'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.' },
             { status: 500 }
         );
     }
