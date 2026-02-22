@@ -503,7 +503,7 @@ export default function InvoiceGenerator() {
                             <div className="avoid-break-inside">
                                 {/* Totals */}
                                 <div className="flex justify-end mb-8">
-                                    <div className="w-1/2 md:w-1/3 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-100" style={{ minWidth: '260px', width: '45%' }}>
                                         <div className="flex justify-between text-sm text-gray-600 mb-2">
                                             <span>{t('subtotal')}</span>
                                             <span>{calculateSubtotal().toFixed(2)} €</span>
@@ -512,9 +512,9 @@ export default function InvoiceGenerator() {
                                             <span>{t('tax')}</span>
                                             <span>{calculateTax().toFixed(2)} €</span>
                                         </div>
-                                        <div className="border-t border-gray-300 my-2 pt-2 flex justify-between font-extrabold text-xl text-[#16a34a]">
-                                            <span>{t('grandTotal')}</span>
-                                            <span>{calculateTotal().toFixed(2)} €</span>
+                                        <div className="border-t border-gray-300 my-2 pt-2 flex justify-between items-center gap-4 font-extrabold text-lg text-[#16a34a]">
+                                            <span className="whitespace-nowrap">{t('grandTotal')}</span>
+                                            <span className="whitespace-nowrap">{calculateTotal().toFixed(2)} €</span>
                                         </div>
                                     </div>
                                 </div>
