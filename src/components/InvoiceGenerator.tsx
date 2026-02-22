@@ -379,11 +379,11 @@ export default function InvoiceGenerator() {
                     >
                         {/* ---------------- WATERMARK ---------------- */}
                         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
-                            {/* Assuming logo exists at /logo.png based on previous context, usually it's public/logo.png */}
                             <img
-                                src="/logo.png"
+                                src="/logo-new-Circle-Ohne-bg.png"
                                 alt="Watermark"
-                                className="w-[80%] opacity-[0.04] grayscale rotate-[-12deg]"
+                                className="w-[70%] opacity-[0.06] rotate-[-8deg]"
+                                style={{ filter: 'grayscale(30%)' }}
                             />
                         </div>
                         {/* ------------------------------------------- */}
