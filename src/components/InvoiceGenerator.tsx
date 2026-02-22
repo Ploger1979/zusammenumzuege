@@ -500,7 +500,7 @@ export default function InvoiceGenerator() {
                             </div>
 
                             {/* BOTTOM SECTION */}
-                            <div className="avoid-break-inside">
+                            <div className="avoid-break-inside mt-16">
                                 {/* Totals */}
                                 <div className="flex justify-end mb-8">
                                     <div className="bg-gray-50 p-4 rounded-lg border border-gray-100" style={{ minWidth: '260px', width: '45%' }}>
