@@ -382,8 +382,12 @@ export default function InvoiceGenerator() {
                             <img
                                 src="/logo-new-Circle-Ohne-bg.png"
                                 alt="Watermark"
-                                className="w-[70%] opacity-[0.06] rotate-[-8deg]"
-                                style={{ filter: 'grayscale(30%)' }}
+                                style={{
+                                    width: '62%',
+                                    opacity: 0.07,
+                                    filter: 'grayscale(20%)',
+                                    transform: 'translateY(12%)',
+                                }}
                             />
                         </div>
                         {/* ------------------------------------------- */}
