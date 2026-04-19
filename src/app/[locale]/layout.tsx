@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     icons: {
       icon: '/favicon-circle.png',
-      apple: '/Final-Logo-Mit-Webseite-2.png',
+      apple: '/Final-Logo-Mit-Webseite.png',
     },
     manifest: '/manifest.json',
     appleWebApp: {

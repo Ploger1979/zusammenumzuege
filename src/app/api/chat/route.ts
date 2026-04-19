@@ -8,7 +8,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Keine Nachrichten" }, { status: 400 });
     }
 
-    const API_KEY = process.env.GEMINI_API_KEY || "AIzaSyDDmjoqAajlzQat20O0QHgm7hiT-nN02aY";
+    const API_KEY = process.env.GEMINI_API_KEY;
+    if (!API_KEY) {
+      return NextResponse.json({ error: "Systemfehler: API Key fehlt in Netlify" }, { status: 500 });
+    }
 
     // System instruction embedded in the prompt to ensure behavior across all versions
     const systemPrompt = `Du bist ein PRÄZISER Sales-Profi für die Firma 'Zusammen Umzüge'. 
