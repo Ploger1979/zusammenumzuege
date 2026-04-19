@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     manifest: '/manifest.json',
     appleWebApp: {
       capable: true,
-      title: 'Zusammen Umzüge',
+      title: 'Zusammen',
       statusBarStyle: 'black-translucent',
     },
   };
