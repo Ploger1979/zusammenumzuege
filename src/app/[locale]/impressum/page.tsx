@@ -1,60 +1,83 @@
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 export default function ImpressumPage() {
     const t = useTranslations('Legal');
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-950 font-sans text-gray-900 dark:text-gray-100 transition-colors duration-300 py-16">
-            <main className="container mx-auto px-4 max-w-3xl">
-                <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">{t('imprintTitle')}</h1>
-                <p className="text-gray-600 dark:text-gray-400 mb-8 italic text-sm">
+        <div className="relative min-h-screen font-sans text-gray-100 selection:bg-blue-500/30">
+            {/* Fixed Fullscreen Background Image */}
+            <div className="fixed inset-0 w-full h-full -z-10">
+                <Image 
+                    src="/impressum-hero.png" 
+                    alt="Impressum Zusammen Umzüge" 
+                    fill 
+                    className="object-cover object-center scale-105"
+                    quality={100}
+                    priority
+                />
+                {/* Deep Overlay to keep it professional and not 'in your face' */}
+                <div className="absolute inset-0 bg-gray-950/80 backdrop-blur-[4px]"></div>
+            </div>
+
+            {/* Scrollable Content Area */}
+            <main className="relative z-10 container mx-auto px-4 max-w-4xl py-24 md:py-32">
+                <div className="text-center mb-12">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase tracking-[0.2em] font-light text-white drop-shadow-2xl">
+                        {t('imprintTitle')}
+                    </h1>
+                    <div className="w-20 h-1 bg-blue-500 mx-auto mt-8 opacity-70"></div>
+                </div>
+
+                <p className="text-gray-400 mb-10 italic text-center text-sm md:text-base font-light tracking-wide max-w-2xl mx-auto">
                     {t('contentNotice')}
                 </p>
 
-                <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 space-y-6">
+                {/* Glassmorphism Content Box */}
+                <div className="bg-black/40 backdrop-blur-2xl p-8 md:p-12 rounded-3xl shadow-2xl border border-white/10 space-y-10 text-gray-300">
 
-                    <section>
-                        <h2 className="text-xl font-bold mb-3 dark:text-white">Angaben gemäß § 5 TMG</h2>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            <strong>Zusammen Umzüge</strong><br />
+                    <section className="group">
+                        <h2 className="text-xl font-medium mb-3 text-white uppercase tracking-wider group-hover:text-blue-400 transition-colors">Angaben gemäß § 5 TMG</h2>
+                        <p className="leading-relaxed font-light text-lg">
+                            <strong className="text-white font-normal">Zusammen Umzüge</strong><br />
                             Zehnthofstraße 55<br />
                             55252 Mainz-Kastel
                         </p>
                     </section>
 
-                    <section>
-                        <h2 className="text-xl font-bold mb-3 dark:text-white">Kontakt</h2>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <section className="group">
+                        <h2 className="text-xl font-medium mb-3 text-white uppercase tracking-wider group-hover:text-blue-400 transition-colors">Kontakt</h2>
+                        <p className="leading-relaxed font-light text-lg">
                             Telefon: 01782722300<br />
                             E-Mail: info@zusammenumzuege.de
                         </p>
                     </section>
 
-                    <section>
-                        <h2 className="text-xl font-bold mb-3 dark:text-white">Umsatzsteuer-ID</h2>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <section className="group">
+                        <h2 className="text-xl font-medium mb-3 text-white uppercase tracking-wider group-hover:text-blue-400 transition-colors">Umsatzsteuer-ID</h2>
+                        <p className="leading-relaxed font-light text-lg">
                             Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-                            DE123456789
+                            <span className="text-white">DE123456789</span>
                         </p>
                     </section>
 
-                    <section>
-                        <h2 className="text-xl font-bold mb-3 dark:text-white">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <section className="group">
+                        <h2 className="text-xl font-medium mb-3 text-white uppercase tracking-wider group-hover:text-blue-400 transition-colors">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                        <p className="leading-relaxed font-light text-lg">
                             Zusammen Umzüge<br />
                             Zehnthofstraße 55<br />
                             55252 Mainz-Kastel
                         </p>
                     </section>
 
-                    <section>
-                        <h2 className="text-xl font-bold mb-3 dark:text-white">Streitschlichtung</h2>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <section className="group">
+                        <h2 className="text-xl font-medium mb-3 text-white uppercase tracking-wider group-hover:text-blue-400 transition-colors">Streitschlichtung</h2>
+                        <p className="leading-relaxed font-light text-lg">
                             Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-                            <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline"> https://ec.europa.eu/consumers/odr</a>.<br />
+                            <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-400 hover:text-blue-300 hover:underline transition-colors">https://ec.europa.eu/consumers/odr</a>.<br />
                             Unsere E-Mail-Adresse finden Sie oben im Impressum.
                         </p>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed mt-2">
+                        <p className="leading-relaxed font-light text-lg mt-4 text-gray-400">
                             Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                         </p>
                     </section>
