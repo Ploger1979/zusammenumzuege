@@ -1,7 +1,11 @@
 import { useTranslations } from 'next-intl';
 import { Home, Building2, Trash2, Warehouse, Truck, Package } from 'lucide-react';
 
-export default function ServiceCards() {
+interface ServiceCardsProps {
+    showHeading?: boolean;
+}
+
+export default function ServiceCards({ showHeading = true }: ServiceCardsProps) {
     const t = useTranslations('ServiceCards');
 
     const services = [
@@ -14,15 +18,17 @@ export default function ServiceCards() {
     ];
 
     return (
-        <section id="services" className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <section id="services" className="py-12 transition-colors duration-300">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <span className="text-secondary font-bold tracking-wider uppercase text-sm">{t('subtitle')}</span>
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">{t('title')}</h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                        {t('desc')}
-                    </p>
-                </div>
+                {showHeading && (
+                    <div className="text-center mb-16">
+                        <span className="text-secondary font-bold tracking-wider uppercase text-sm">{t('subtitle')}</span>
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mt-2 mb-4">{t('title')}</h2>
+                        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                            {t('desc')}
+                        </p>
+                    </div>
+                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (

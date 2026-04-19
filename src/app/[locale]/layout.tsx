@@ -1,11 +1,12 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Geist, Geist_Mono, Cairo } from "next/font/google"; // Added Cairo for Arabic
+import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Chatbot from "@/components/Chatbot";
 import type { Metadata } from 'next';
 
 const geistSans = Geist({
@@ -16,11 +17,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["arabic", "latin"],
 });
 
 import { getTranslations } from 'next-intl/server';
@@ -48,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       locale: locale,
       type: 'website',
     },
-    twitter: {
+      twitter: {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
@@ -59,10 +55,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     icons: {
       icon: '/favicon-circle.png',
-      apple: '/favicon-circle.png',
+      apple: '/Final-Logo-Mit-Webseite.png',
+    },
+    manifest: '/manifest.json',
+    appleWebApp: {
+      capable: true,
+      title: 'Zusammen Umzüge',
+      statusBarStyle: 'black-translucent',
     },
   };
 }
+
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090b' },
+  ],
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export default async function RootLayout({
   children,
@@ -73,26 +85,21 @@ export default async function RootLayout({
 }) {
   const { locale } = await params;
 
-  // Validate that the incoming `locale` parameter is valid
-  if (!['en', 'de', 'ar'].includes(locale)) {
+  // Validate that the incoming `locale` parameter is valid - ONLY DE ALLOWED NOW
+  if (locale !== 'de') {
     notFound();
   }
 
   // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
-  const dir = locale === 'ar' ? 'rtl' : 'ltr';
-  const lang = locale;
-  const isArabic = locale === 'ar';
-
   return (
-    <html lang={lang} dir={dir} suppressHydrationWarning>
+    <html lang="de" dir="ltr" suppressHydrationWarning>
       <body
         className={`
-            ${geistSans.variable} ${geistMono.variable} ${cairo.variable} 
+            ${geistSans.variable} ${geistMono.variable}
             antialiased transition-colors duration-300
-            ${isArabic ? 'font-cairo' : 'font-sans'}
+            font-sans
             bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100
         `}
       >
@@ -109,6 +116,7 @@ export default async function RootLayout({
                 {children}
               </main>
               <Footer />
+              <Chatbot />
             </div>
           </ThemeProvider>
         </NextIntlClientProvider>

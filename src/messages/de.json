@@ -152,7 +152,22 @@
         "customReq": "Haben Sie spezielle Anforderungen?",
         "customDesc": "Jeder Umzug ist einzigartig. Wenn Sie den gewünschten Service nicht finden, kontaktieren Sie uns. Wir finden eine Lösung.",
         "contactBtn": "Kontaktieren Sie uns",
-        "whatsapp": "WhatsApp Chat"
+        "whatsapp": "WhatsApp Chat",
+        "heroTitle": "Professionelle Umzugsservices",
+        "heroSubtitle": "Alles aus einer Hand - Deutschlandweit"
+    },
+    "MovingLabels": {
+        "title": "Unser intelligentes Farbsystem",
+        "subtitle": "Alles am richtigen Platz – von Anfang an.",
+        "desc": "Damit Ihr Umzug so stressfrei wie möglich wird, haben wir ein einzigartiges Farbsystem entwickelt. Jede Kiste bekommt ein spezielles Farbsiegel, damit unser Team sofort weiß, in welchen Raum die Kiste gehört.",
+        "kitchen": "Küche & Haushalt",
+        "kitchenDesc": "Rote Aufkleber für alles rund um Kulinarik und Küche.",
+        "bedroom": "Schlafzimmer & Kleidung",
+        "bedroomDesc": "Blaue Aufkleber für Betten, Kleidung und Textilien.",
+        "living": "Wohnen & Dekoration",
+        "livingDesc": "Gelbe Aufkleber für Wohnzimmer, Technik und Deko-Elemente.",
+        "garden": "Garten & Keller",
+        "gardenDesc": "Grüne Aufkleber für Vorräte, Werkzeug und Gartenbedarf."
     },
     "ServiceDetails": {
         "title": "Detaillierte Leistungen",
@@ -316,5 +331,21 @@
         "passwordMismatch": "Passwörter stimmen nicht überein",
         "logout": "Abmelden",
         "requests": "Anfragen"
+    },
+    "Chatbot": {
+        "title": "Zusammen Service-Team",
+        "welcome": "Hallo! 👋 Ich bin Ihr Zusammen Service-Assistent. Wie kann ich Ihnen heute bei Ihrem Umzug helfen?",
+        "placeholder": "Schreiben Sie eine Nachricht...",
+        "send": "Senden",
+        "agent": "Service-Team",
+        "status": "Online",
+        "newChat": "Neuer Chat",
+        "fastReply": "Wie viel kostet ein Umzug?",
+        "callBack": "Ich wünsche einen Rückruf",
+        "leadTrigger": "Das kann ich gerne für Sie prüfen! Um Ihnen ein genaues Angebot zu erstellen, benötige ich kurz zwei Informationen. Wie ist Ihr Name?",
+        "askPhone": "Vielen Dank, {name}! Und unter welcher Telefonnummer können wir Sie am besten erreichen?",
+        "success": "Perfekt! Ich habe Ihre Daten an unser Team weitergeleitet. Sie können uns auch direkt per WhatsApp kontaktieren, um den Prozess zu beschleunigen.",
+        "whatsappLead": "Hallo Zusammen Umzüge, ich habe Interesse an einem Umzug. Mein Name: {name}, Tel: {phone}. Bitte um Rückruf.",
+        "leadCapture": "Könnten Sie mir bitte Ihren Namen und Ihre Telefonnummer hinterlassen? Einer unserer Experten wird sich umgehend bei Ihnen melden."
     }
 }

@@ -27,9 +27,13 @@ export default function AdminRequestsPage() {
 
     const [requests, setRequests] = useState<RequestData[]>([]);
     const [loading, setLoading] = useState(true);
+    const [isSuperAdmin, setIsSuperAdmin] = useState(false);
 
     useEffect(() => {
         loadRequests();
+        // Check role from cookies (client-side)
+        const role = typeof document !== 'undefined' ? document.cookie.split('; ').find(row => row.startsWith('admin_role='))?.split('=')[1] : null;
+        setIsSuperAdmin(role === 'superadmin');
     }, []);
 
     async function loadRequests() {
@@ -56,16 +60,17 @@ export default function AdminRequestsPage() {
                     {t('activeRequests')}
                 </h1>
                 <div className="flex gap-4">
-                    <Link href={`/${locale}/admin/users`} className="px-4 py-2 border border-gray-300 dark:border-[#FFC107] text-gray-700 dark:text-[#FFC107] rounded hover:bg-[#FFC107] hover:text-black transition flex items-center gap-2">
-                        <Shield size={18} />
-                        {t('admins')}
-                    </Link>
+                    {/* ONLY VISIBLE TO SUPER ADMIN */}
+                    {isSuperAdmin && (
+                        <Link href={`/${locale}/admin/users`} className="px-4 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-500 hover:text-white transition flex items-center gap-2">
+                            <Shield size={18} />
+                            {t('admins')}
+                        </Link>
+                    )}
                     <button onClick={async () => {
-                        await fetch('/api/auth/logout', { method: 'POST' }); // Or call server action if available client-side, using direct logout action import is better
-                        // For quick implementation since we are in a client component:
                         const { logout } = await import('@/app/actions/auth');
                         await logout();
-                        window.location.href = '/';
+                        window.location.href = `/${locale}/login`;
                     }} className="px-4 py-2 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition flex items-center gap-2">
                         <LogOut size={18} />
                         {t('logout') || 'Abmelden'}

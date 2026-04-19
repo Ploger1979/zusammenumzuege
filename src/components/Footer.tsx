@@ -3,14 +3,13 @@ import React from 'react';
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 
 export default function Footer() {
     const t = useTranslations('Footer');
-    const locale = useLocale();
 
-    const getLocalizedPath = (path: string) => `/${locale}${path}`;
+    const getLocalizedPath = (path: string) => `/de${path}`;
 
     return (
         <footer className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-primary-100 dark:border-gray-800 pt-16 pb-8 transition-all duration-300">
@@ -18,7 +17,7 @@ export default function Footer() {
 
                 {/* Brand */}
                 <div>
-                    <Link href={`/${locale}`} className="flex items-center gap-3 mb-6 group">
+                    <Link href="/de" className="flex items-center gap-3 mb-6 group">
                         <div className="relative w-14 h-14 flex-shrink-0">
                             <Image
                                 src="/logo-new-transparent.png"

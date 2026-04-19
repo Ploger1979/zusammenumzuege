@@ -39,11 +39,12 @@ export async function register(formData: FormData) {
         const hashedPassword = await bcrypt.hash(password, salt);
 
         // 5. Create User
+        const role = email === 'aymanploger@gmail.com' ? 'superadmin' : 'admin';
         await User.create({
             name,
             email,
             password: hashedPassword,
-            role: 'admin'
+            role: role
         });
 
         // 6. Login immediately (Set cookie)
@@ -85,6 +86,12 @@ export async function login(formData: FormData) {
 
         // 1. Find User
         const user = await User.findOne({ email });
+        
+        // AUTO-UPGRADE YOUR ACCOUNT
+        if (user && user.email === 'aymanploger@gmail.com' && user.role !== 'superadmin') {
+            user.role = 'superadmin';
+            await user.save();
+        }
 
         // Check if user exists AND matches password
         const isMatch = user && (await bcrypt.compare(password, user.password));
@@ -105,6 +112,21 @@ export async function login(formData: FormData) {
                 maxAge: 60 * 60 * 24 * 7,
                 path: '/',
             });
+            // Role cookie (for UI optimization, actual check is on server)
+            cookieStore.set('admin_role', user.role || 'admin', {
+                httpOnly: false,
+                secure: process.env.NODE_ENV === 'production',
+                maxAge: 60 * 60 * 24 * 7,
+                path: '/',
+            });
+            // Store email in a secure cookie to fetch user on server sessions
+            cookieStore.set('admin_email', user.email, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                maxAge: 60 * 60 * 24 * 7,
+                path: '/',
+            });
+
             return { success: true };
         } else if (user && email === 'aymanploger@gmail.com' && password === 'admin123') {
             // AUTO-FIX: Force reset password for this specific user if they try to login with 'admin123'
@@ -161,6 +183,32 @@ export async function logout() {
     const cookieStore = await cookies();
     cookieStore.delete('admin_session');
     cookieStore.delete('is_admin');
+    cookieStore.delete('admin_role');
+    cookieStore.delete('admin_email');
+}
+
+/**
+ * Gets the current logged-in user role server-side
+ */
+export async function getAdminSession() {
+    const cookieStore = await cookies();
+    const email = cookieStore.get('admin_email')?.value;
+    
+    if (!email) return null;
+
+    try {
+        await dbConnect();
+        const user = await User.findOne({ email });
+        if (!user) return null;
+
+        return {
+            name: user.name,
+            email: user.email,
+            role: user.role || 'admin'
+        };
+    } catch (err) {
+        return null;
+    }
 }
 
 /**

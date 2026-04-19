@@ -34,6 +34,11 @@ export default function AdminUsersPage() {
 
     // Load users on mount
     useEffect(() => {
+        const role = typeof document !== 'undefined' ? document.cookie.split('; ').find(row => row.startsWith('admin_role='))?.split('=')[1] : null;
+        if (role !== 'superadmin') {
+            router.push(`/${locale}/admin/requests`);
+            return;
+        }
         loadUsers();
     }, []);
 

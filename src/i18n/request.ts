@@ -4,13 +4,13 @@ export default getRequestConfig(async ({ requestLocale }) => {
     // This typically corresponds to the `[locale]` segment
     let locale = await requestLocale;
 
-    // Ensure that a valid locale is used
-    if (!locale || !['en', 'de', 'ar'].includes(locale)) {
+    // Force German locale
+    if (!locale || locale !== 'de') {
         locale = 'de';
     }
 
     return {
         locale,
-        messages: (await import(`../messages/${locale}.json`)).default
+        messages: (await import(`../messages/de.json`)).default
     };
 });

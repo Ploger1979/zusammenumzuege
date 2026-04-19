@@ -2,8 +2,8 @@ import createMiddleware from 'next-intl/middleware';
 import { NextRequest } from 'next/server';
 
 const intlMiddleware = createMiddleware({
-    // A list of all locales that are supported
-    locales: ['en', 'de', 'ar'],
+    // Support only German
+    locales: ['de'],
 
     // Used when no locale matches
     defaultLocale: 'de',

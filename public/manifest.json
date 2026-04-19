@@ -1,0 +1,24 @@
+{
+  "name": "Zusammen Umzüge",
+  "short_name": "Zusammen Umzüge",
+  "description": "Ihr zuverlässiger Partner für Umzüge deutschlandweit",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/Final-Logo-Mit-Webseite.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Final-Logo-Mit-Webseite.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
