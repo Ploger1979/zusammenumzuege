@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     icons: {
       icon: '/favicon-circle.png',
-      apple: '/Final-Logo-Mit-Webseite.png',
+      apple: '/Final-Logo-Mit-Webseite-2.png',
     },
     manifest: '/manifest.json',
     appleWebApp: {
@@ -104,6 +105,15 @@ export default async function RootLayout({
         `}
       >
         <NextIntlClientProvider messages={messages}>
+          <Script id="register-sw" strategy="afterInteractive">
+            {`
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js');
+                });
+              }
+            `}
+          </Script>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
