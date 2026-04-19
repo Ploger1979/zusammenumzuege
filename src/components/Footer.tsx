@@ -35,7 +35,7 @@ export default function Footer() {
                         {t('about')}
                     </p>
                     <div className="flex gap-6">
-                        <a href="https://www.facebook.com/zusammen.umzuege" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
+                        <a href="https://www.facebook.com/profile.php?id=61572029682674" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform duration-300">
                             <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="12" cy="12" r="12" fill="#1877F2" />
                                 <path d="M14.5 12.01h2l0.5-3h-2.5v-2c0-0.75 0.25-1 1-1h1.5v-3h-2.5c-2.5 0-3.5 1.25-3.5 3.5v2.5h-2v3h2v9h3.5v-9z" fill="white" />
