@@ -1,8 +1,9 @@
 {
   "name": "Zusammen Umzüge",
   "short_name": "Zusammen",
+  "id": "/?v=2",
   "description": "Ihr zuverlässiger Partner für Umzüge deutschlandweit",
-  "start_url": "/",
+  "start_url": "/?utm_source=pwa",
   "display": "standalone",
   "background_color": "#0F172A",
   "theme_color": "#0F172A",

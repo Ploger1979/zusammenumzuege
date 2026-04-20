@@ -55,10 +55,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       google: '2IhAGtUCnfAXY5Wg_9tDrCqUw7TbpeUSHnD8Pd4lr0M',
     },
     icons: {
-      icon: '/favicon-circle.png',
-      apple: '/Final-Logo-Mit-Webseite.png',
+      icon: '/icon-192.png',
+      apple: '/icon-512.png',
     },
-    manifest: '/manifest.json',
+    manifest: '/manifest.json?v=2',
     appleWebApp: {
       capable: true,
       title: 'Zusammen',
