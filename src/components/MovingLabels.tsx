@@ -16,7 +16,7 @@ export default function MovingLabels() {
     ];
 
     return (
-        <section className="py-24 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-hidden">
+        <section className="py-24 bg-white dark:bg-gray-950 transition-colors duration-300">
             <div className="container mx-auto px-4">
                 
                 <div className="flex flex-col lg:flex-row items-center gap-16 mb-20">
@@ -41,7 +41,7 @@ export default function MovingLabels() {
                     </div>
 
                     {/* Two-Frame Pro Collage System */}
-                    <div className="lg:w-[55%] relative grid grid-cols-2 gap-4 md:gap-6 items-center">
+                    <div className="w-full lg:w-[55%] relative grid grid-cols-2 gap-4 md:gap-6 items-center mt-10 lg:mt-0">
                         
                         {/* Frame 1: Left Cadre (The Color System Render) */}
                         <motion.div 
