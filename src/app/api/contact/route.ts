@@ -6,8 +6,24 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const { firstName, lastName, phone, message } = body;
 
+        // Simple Input Sanitization (Escaping HTML tags)
+        const escapeHtml = (text: string) => {
+            if (!text) return '';
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        };
+
+        const safeFirstName = escapeHtml(firstName);
+        const safeLastName = escapeHtml(lastName);
+        const safePhone = escapeHtml(phone);
+        const safeMessage = escapeHtml(message);
+
         // Validation
-        if (!firstName || !lastName || !message) {
+        if (!safeFirstName || !safeLastName || !safeMessage) {
             return NextResponse.json(
                 { error: 'Bitte alle Pflichtfelder ausfüllen.' },
                 { status: 400 }
@@ -67,21 +83,21 @@ export async function POST(req: NextRequest) {
                     <div class="grid-2">
                         <div>
                             <div class="field-label">Vorname</div>
-                            <div class="field-value">${firstName}</div>
+                            <div class="field-value">${safeFirstName}</div>
                         </div>
                         <div>
                             <div class="field-label">Nachname</div>
-                            <div class="field-value">${lastName}</div>
+                            <div class="field-value">${safeLastName}</div>
                         </div>
                     </div>
                     <div class="field">
                         <div class="field-label">📞 Telefon</div>
-                        <div class="field-value">${phone || '— Nicht angegeben'}</div>
+                        <div class="field-value">${safePhone || '— Nicht angegeben'}</div>
                     </div>
                     <hr class="divider" />
                     <div class="field">
                         <div class="field-label">💬 Nachricht</div>
-                        <div class="message-box">${message.replace(/\n/g, '<br/>')}</div>
+                        <div class="message-box">${safeMessage.replace(/\n/g, '<br/>')}</div>
                     </div>
                     <hr class="divider" />
                     <p class="timestamp">📅 Empfangen am: <strong>${new Date().toLocaleString('de-DE', { timeZone: 'Europe/Berlin', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })} Uhr</strong></p>
@@ -102,9 +118,9 @@ export async function POST(req: NextRequest) {
         await transporter.sendMail({
             from: `"Zusammen Umzüge" <${process.env.SMTP_USER}>`,
             to: 'info@zusammenumzuege.de',
-            subject: `📬 Neue Anfrage von ${firstName} ${lastName}`,
+            subject: `📬 Neue Anfrage von ${safeFirstName} ${safeLastName}`,
             html: htmlContent,
-            text: `Neue Kontaktanfrage\n\nName: ${firstName} ${lastName}\nTelefon: ${phone || 'Nicht angegeben'}\n\nNachricht:\n${message}`,
+            text: `Neue Kontaktanfrage\n\nName: ${safeFirstName} ${safeLastName}\nTelefon: ${safePhone || 'Nicht angegeben'}\n\nNachricht:\n${safeMessage}`,
         });
 
         return NextResponse.json({ success: true }, { status: 200 });

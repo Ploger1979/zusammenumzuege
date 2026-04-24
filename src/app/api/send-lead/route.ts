@@ -3,6 +3,24 @@ import { NextResponse } from 'next/server';
 export async function POST(req: Request) {
   try {
     const { name, phone, from, to, message } = await req.json();
+
+    // Simple Input Sanitization (Escaping HTML tags)
+    const escapeHtml = (text: string) => {
+        if (!text) return '';
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    };
+
+    const safeName = escapeHtml(name);
+    const safePhone = escapeHtml(phone);
+    const safeFrom = escapeHtml(from);
+    const safeTo = escapeHtml(to);
+    const safeMsg = escapeHtml(message);
+
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
     const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
@@ -11,14 +29,14 @@ export async function POST(req: Request) {
     let kalkulationHtml = "";
 
     // 1. Google Maps Calculation (only if addresses are present)
-    if (from && to && from !== '...' && to !== '...' && GOOGLE_MAPS_API_KEY) {
+    if (safeFrom && safeTo && safeFrom !== '...' && safeTo !== '...' && GOOGLE_MAPS_API_KEY) {
       try {
         const COMPANY_HQ = "Zehnthofstraße 55, 55252 Mainz-Kastel, Deutschland";
 
         // Distanz: HQ -> Auszugsort (From)
-        const mapsUrlHqToFrom = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(COMPANY_HQ)}&destinations=${encodeURIComponent(from)}&key=${GOOGLE_MAPS_API_KEY}`;
+        const mapsUrlHqToFrom = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(COMPANY_HQ)}&destinations=${encodeURIComponent(safeFrom)}&key=${GOOGLE_MAPS_API_KEY}`;
         // Distanz: Auszugsort (From) -> Einzugsort (To)
-        const mapsUrlFromToTo = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(from)}&destinations=${encodeURIComponent(to)}&key=${GOOGLE_MAPS_API_KEY}`;
+        const mapsUrlFromToTo = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${encodeURIComponent(safeFrom)}&destinations=${encodeURIComponent(safeTo)}&key=${GOOGLE_MAPS_API_KEY}`;
 
         const [res1, res2] = await Promise.all([
           fetch(mapsUrlHqToFrom).then(res => res.json()),
@@ -101,23 +119,23 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         from: 'Zusammen Umzüge AI <onboarding@resend.dev>',
         to: ['info@zusammenumzuege.de'], 
-        subject: `🚚 Neuer Lead: ${name} (${distanceText})`,
+        subject: `🚚 Neuer Lead: ${safeName} (${distanceText})`,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee;">
             <h1 style="color: #333;">Neuer Umzugs-Lead (Chatbot)</h1>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Telefon:</strong> ${phone}</p>
-            <p><strong>Von:</strong> ${from || '...'}</p>
-            <p><strong>Nach:</strong> ${to || '...'}</p>
+            <p><strong>Name:</strong> ${safeName}</p>
+            <p><strong>Telefon:</strong> ${safePhone}</p>
+            <p><strong>Von:</strong> ${safeFrom || '...'}</p>
+            <p><strong>Nach:</strong> ${safeTo || '...'}</p>
             
             ${kalkulationHtml}
 
             <hr style="margin-top: 30px;" />
             <p><strong>Vollständiger Nachrichtenverlauf:</strong></p>
             <div style="background: #f9f9f9; padding: 10px; border-radius: 5px;">
-              <pre style="white-space: pre-wrap;">${message}</pre>
+              <pre style="white-space: pre-wrap;">${safeMsg}</pre>
             </div>
-            <p style="color: #999; font-size: 12px; margin-top: 20px;">Gesendet von Ihrem Zusammen Umzüge KI-Assistenten.</p>
+            <p style="color: #999; font-size: 12px; margin-top: 20px;">Gesendet von Ihrem Zusammen Umzüge KI-Assistentات.</p>
           </div>
         `,
       }),
